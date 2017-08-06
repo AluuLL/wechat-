@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="viewport" content="width=640, user-scalable=no,target-densitydpi=device-dpi">
+        <title>发音演示</title>
+    </head>
+    <style>
+    	.v{
+    		width: 270px;
+		    height: 480px;
+		    padding-right: 10px;
+		    vertical-align: top;
+    	}
+    	.title{
+		    font-size: 24px;
+		    font-weight: bold;
+    	}
+    	.des{
+		    font-size: 24px;
+    	}
+    </style>
+    <script type="text/javascript">
+	function playPause(index) {
+	       var myVideo = document.getElementsByTagName('video')[index];
+	 
+	       if (myVideo.paused){
+	 
+	           myVideo.play();
+			}
+	       else{
+	 
+	           myVideo.pause();
+		}
+	}
+   </script> 
+    <body style="background-image:url(img/bkg_play.png);background-size: cover;background-attachment: fixed;background-repeat:no-repeat" id="bkg2">
+
+		<div id="header" style="background-color:#008080;">
+		<h1 style="margin-bottom:1;" align="center">发音演示</h1></div>
+		
+
+		</div>
+        <div id="container">
+    </body>
+    <script type="text/javascript" src="js/own.js"></script>
+    <script type="text/javascript">
+		var h = document.documentElement.clientHeight;
+		var bkg2 = document.getElementById("bkg2");
+		bkg2.style.height = h + "px";
+		
+    	var arg = GetArgsFromHref('snd');
+    	var type = GetArgsFromHref('type');
+		document.body.innerHTML += '<video controls="controls" class="v" onclick="playPause(0)" src="video/tongue/'+type+'/舌位图_'+arg+'.mp4">您的浏览器不支持 video 标签。</video>';
+		document.body.innerHTML += '<video controls="controls" class="v" onclick="playPause(1)" src="video/shape/'+type+'/'+arg+'.mp4">您的浏览器不支持 video 标签。</video>';
+		document.body.innerHTML += '<div class="title">'+arg+'：</div>';
+		for(tid in listZiMu[type]){
+			if(listZiMu[type][tid]==arg){
+				document.body.innerHTML += '<div class="des">'+listText[type][tid]+'</div>';
+				break;
+			}
+		}
+    </script>
+
+</html>
